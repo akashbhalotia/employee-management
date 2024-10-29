@@ -1,0 +1,32 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
+
+    <persistence-unit name="EmployeePU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.cercli.models.Employee</class>
+        <class>com.cercli.converters.CurrencyConverter</class>
+        <class>com.cercli.converters.LocaleConverter</class>
+        <properties>
+            <!-- Database connection properties -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/employee_db"/>
+            <property name="jakarta.persistence.jdbc.user" value="defaultUser"/>
+            <property name="jakarta.persistence.jdbc.password" value="defaultPassword"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- Bean Validation properties -->
+            <property name="jakarta.persistence.validation.mode" value="AUTO"/>
+            <property name="hibernate.validator.autoregister_listeners" value="true"/>
+
+            <!-- Logging properties -->
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.use_sql_comments" value="false"/>
+        </properties>
+    </persistence-unit>
+</persistence>
